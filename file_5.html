@@ -1,21 +1,154 @@
-MIT License
+This will:
+- Fetch the latest data from NOAA
+- Filter records from 2010 onwards
+- Calculate statistics
+- Generate yearly moving average data
+- Save results to `data.json`
 
-Copyright (c) 2024 NOAA CO2 Data Viewer
+## Usage Guide
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+### Viewing the Interactive Dashboard
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. Open `index.html` in your web browser:
+   - Double-click the file, or
+   - Right-click → Open with → Your Browser, or
+   - Serve via a local web server (recommended for best results)
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+2. The page will display:
+   - Dataset title in the page header
+   - Theme toggle button (dark/light mode)
+   - Three statistics cards showing max, min, and average CO₂ levels
+   - An interactive line chart of CO₂ concentration over time
+   - A year filter dropdown
+   - A comprehensive summary statistics table
+
+### Using the Theme Toggle
+
+- Click the **🌙 Dark Mode** / **☀️ Light Mode** button in the header
+- Your preference is automatically saved in browser storage
+- The theme persists across page reloads
+- All charts and visualizations update dynamically
+
+### Filtering Data
+
+- **Use the dropdown**: Select any year from the "Filter by Year" dropdown to view data for that specific year
+- **Use URL parameters**: Navigate to `index.html?year=2022` to automatically filter to 2022
+- **View all data**: Select "All Years (2010+)" to see the complete dataset with the 5-year moving average trendline
+
+### Understanding the Visualizations
+
+#### Line Chart
+- **Blue/Purple Line**: Raw monthly CO₂ measurements
+- **Pink/Cyan Line**: 5-year moving average (visible only when "All Years" is selected)
+- **Interactive**: Hover over data points for detailed information
+
+#### Summary Table
+- **Year**: Calendar year
+- **Maximum**: Highest monthly CO₂ reading for that year
+- **Minimum**: Lowest monthly CO₂ reading for that year
+- **Average**: Mean CO₂ concentration for that year
+
+### Understanding the Data
+
+- **Values**: CO₂ concentration measured in parts per million (ppm)
+- **Time Range**: Monthly measurements from January 2010 to present
+- **Source**: Mauna Loa Observatory, Hawaii (NOAA Global Monitoring Laboratory)
+- **Moving Average**: Calculated using a 60-month (5-year) rolling window
+
+## Code Structure
+
+### File Descriptions
+
+- **index.html**: Single-page application with embedded JavaScript and CSS. Features:
+  - Real-time data fetching from NOAA API
+  - Interactive Chart.js visualization with dual datasets
+  - Dark/light theme toggle with localStorage persistence
+  - Dynamic year filtering and URL parameter handling
+  - Responsive summary statistics table
+
+- **data.json**: Contains calculated statistics and pre-processed data:
+  - Max, min, and average CO₂ values
+  - Yearly moving average dataset
+  - Used to populate statistics cards and initialize visualizations
+
+- **fetch_data.py**: Standalone Python script for data processing:
+  - Fetches raw JSON from NOAA API
+  - Filters records from 2010 onwards
+  - Calculates comprehensive statistics
+  - Generates moving average data points
+  - Saves to `data.json`
+
+- **uid.txt**: Unique project identifier for tracking and verification
+
+- **LICENSE**: Standard MIT License granting permissions for use, modification, and distribution
+
+## Data Source
+
+This project uses data from:
+- **Provider**: NOAA Global Monitoring Laboratory
+- **Dataset**: Mauna Loa CO₂ Monthly Mean
+- **URL**: https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_mlo.json
+- **Update Frequency**: Monthly
+
+The Mauna Loa Observatory has been measuring atmospheric CO₂ since 1958, providing the longest continuous record of direct atmospheric CO₂ measurements in the world.
+
+## Technical Details
+
+### Browser Compatibility
+
+- Modern browsers with ES6 support
+- Canvas API for Chart.js rendering
+- Fetch API for data retrieval
+- URLSearchParams for query string handling
+- localStorage for theme persistence
+
+### Performance
+
+- Efficient client-side filtering (no page reloads)
+- Chart updates use Chart.js destroy/recreate pattern
+- Minimal DOM manipulation
+- Responsive canvas rendering
+- Theme-aware dynamic color schemes
+
+### Data Processing
+
+- **Moving Average Calculation**: 60-month rolling window for 5-year average
+- **Statistical Analysis**: Real-time calculation of yearly min/max/avg values
+- **Data Filtering**: Client-side year filtering with instant updates
+
+## New Features Summary (Round 2)
+
+1. **5-Year Moving Average**
+   - Computed from filtered CO₂ data (2010+)
+   - Displayed as smooth secondary line on chart
+   - Visible when "All Years" filter is selected
+   - Legend distinguishes raw data from moving average
+
+2. **Summary Statistics Table**
+   - Dynamically populated after data fetch
+   - Shows Year, Max, Min, Average for each year
+   - Responsive design with hover effects
+   - Theme-aware styling
+
+3. **Enhanced Year Filter**
+   - "All Years (2010+)" option as default
+   - Displays full dataset with moving average
+   - Preserves existing URL parameter functionality
+
+4. **Dark/Light Mode Toggle**
+   - Button in header for easy access
+   - Saves preference in localStorage
+   - Applies theme on page reload
+   - Updates all UI elements and charts dynamically
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+The CO₂ data is provided by NOAA and is in the public domain.
+
+## Acknowledgments
+
+- **NOAA Global Monitoring Laboratory** for providing open access to atmospheric CO₂ data
+- **Chart.js** for the powerful and flexible charting library
+- **Mauna Loa Observatory** for decades of precise atmospheric measurements
