@@ -1,0 +1,34 @@
+This will:
+- Fetch the latest data from NOAA
+- Filter records from 2010 onwards
+- Calculate statistics
+- Save results to `data.json`
+
+## Usage Guide
+
+### Viewing the Interactive Dashboard
+
+1. Open `index.html` in your web browser:
+   - Double-click the file, or
+   - Right-click → Open with → Your Browser, or
+   - Serve via a local web server (recommended for best results)
+
+2. The page will display:
+   - Dataset title in the page header
+   - Three statistics cards showing max, min, and average CO₂ levels
+   - An interactive line chart of CO₂ concentration over time
+   - A year filter dropdown
+
+### Filtering Data
+
+- **Use the dropdown**: Select any year from the "Filter by Year" dropdown to view data for that specific year
+- **Use URL parameters**: Navigate to `index.html?year=2022` to automatically filter to 2022
+- **View all data**: Select "All Years (2010+)" to see the complete dataset
+
+### Understanding the Data
+
+- **Values**: CO₂ concentration measured in parts per million (ppm)
+- **Time Range**: Monthly measurements from January 2010 to present
+- **Source**: Mauna Loa Observatory, Hawaii (NOAA Global Monitoring Laboratory)
+
+## Code Structure
