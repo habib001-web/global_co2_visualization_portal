@@ -1,0 +1,14 @@
+{
+  "dataset": "NOAA CO2 Monthly Mean",
+  "max": {
+    "val": 426.9,
+    "year": 2024,
+    "month": 5
+  },
+  "min": {
+    "val": 387.35,
+    "year": 2010,
+    "month": 1
+  },
+  "average": 406.34
+}
