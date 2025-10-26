@@ -1,0 +1,49 @@
+### File Descriptions
+
+- **index.html**: Single-page application with embedded JavaScript and CSS. Fetches live data from NOAA, renders Chart.js visualization, and handles user interactions.
+
+- **data.json**: Contains calculated statistics (max, min, average) from the filtered dataset. Used to populate the statistics cards quickly without processing the entire dataset.
+
+- **fetch_data.py**: Standalone Python script that demonstrates data processing logic. Fetches raw JSON from NOAA, filters records, calculates statistics, and saves to `data.json`.
+
+- **uid.txt**: Unique project identifier for tracking and verification.
+
+- **LICENSE**: Standard MIT License granting permissions for use, modification, and distribution.
+
+## Data Source
+
+This project uses data from:
+- **Provider**: NOAA Global Monitoring Laboratory
+- **Dataset**: Mauna Loa CO₂ Monthly Mean
+- **URL**: https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_mlo.json
+- **Update Frequency**: Monthly
+
+The Mauna Loa Observatory has been measuring atmospheric CO₂ since 1958, providing the longest continuous record of direct atmospheric CO₂ measurements in the world.
+
+## Technical Details
+
+### Browser Compatibility
+
+- Modern browsers with ES6 support
+- Canvas API for Chart.js rendering
+- Fetch API for data retrieval
+- URLSearchParams for query string handling
+
+### Performance
+
+- Efficient client-side filtering (no page reloads)
+- Chart updates use Chart.js destroy/recreate pattern
+- Minimal DOM manipulation
+- Responsive canvas rendering
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+The CO₂ data is provided by NOAA and is in the public domain.
+
+## Acknowledgments
+
+- **NOAA Global Monitoring Laboratory** for providing open access to atmospheric CO₂ data
+- **Chart.js** for the powerful and flexible charting library
+- **Mauna Loa Observatory** for decades of precise atmospheric measurements
