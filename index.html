@@ -18,6 +18,12 @@
             color: #333;
             padding: 20px;
             min-height: 100vh;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
         }
 
         .container {
@@ -27,6 +33,12 @@
             border-radius: 16px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             padding: 40px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode .container {
+            background: #0f3460;
+            color: #e0e0e0;
         }
 
         h1 {
@@ -35,6 +47,45 @@
             margin-bottom: 30px;
             font-size: 2.5em;
             font-weight: 700;
+        }
+
+        body.dark-mode h1 {
+            color: #bb86fc;
+        }
+
+        .header-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        #theme-toggle {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        #theme-toggle:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        body.dark-mode #theme-toggle {
+            background: #bb86fc;
+            color: #1a1a2e;
+        }
+
+        body.dark-mode #theme-toggle:hover {
+            background: #03dac6;
         }
 
         .stats-grid {
@@ -52,6 +103,10 @@
             transition: transform 0.3s ease;
         }
 
+        body.dark-mode .stat-card {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+        }
+
         .stat-card:hover {
             transform: translateY(-5px);
         }
@@ -64,6 +119,10 @@
             margin-bottom: 10px;
         }
 
+        body.dark-mode .stat-card h3 {
+            color: #b0b0b0;
+        }
+
         .stat-value {
             font-size: 2.2em;
             font-weight: 700;
@@ -71,9 +130,17 @@
             margin-bottom: 5px;
         }
 
+        body.dark-mode .stat-value {
+            color: #bb86fc;
+        }
+
         .stat-meta {
             color: #777;
             font-size: 0.9em;
+        }
+
+        body.dark-mode .stat-meta {
+            color: #a0a0a0;
         }
 
         .controls {
@@ -87,9 +154,17 @@
             flex-wrap: wrap;
         }
 
+        body.dark-mode .controls {
+            background: #16213e;
+        }
+
         .controls label {
             font-weight: 600;
             color: #555;
+        }
+
+        body.dark-mode .controls label {
+            color: #e0e0e0;
         }
 
         #year-filter {
@@ -101,6 +176,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
             min-width: 150px;
+        }
+
+        body.dark-mode #year-filter {
+            background: #0f3460;
+            color: #e0e0e0;
+            border-color: #bb86fc;
         }
 
         #year-filter:hover {
@@ -116,6 +197,62 @@
             position: relative;
             height: 500px;
             margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        #co2-summary {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode #co2-summary {
+            background: #16213e;
+        }
+
+        #co2-summary thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        body.dark-mode #co2-summary thead {
+            background: linear-gradient(135deg, #bb86fc 0%, #03dac6 100%);
+            color: #1a1a2e;
+        }
+
+        #co2-summary th,
+        #co2-summary td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        body.dark-mode #co2-summary th,
+        body.dark-mode #co2-summary td {
+            border-bottom: 1px solid #2a2a3e;
+        }
+
+        #co2-summary th {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9em;
+        }
+
+        #co2-summary tbody tr:hover {
+            background: #f5f7fa;
+        }
+
+        body.dark-mode #co2-summary tbody tr:hover {
+            background: #1a1a2e;
+        }
+
+        #co2-summary tbody tr:last-child td {
+            border-bottom: none;
         }
 
         .loading {
@@ -125,6 +262,10 @@
             font-size: 1.2em;
         }
 
+        body.dark-mode .loading {
+            color: #bb86fc;
+        }
+
         .error {
             background: #fee;
             border: 2px solid #fcc;
@@ -132,6 +273,12 @@
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
+        }
+
+        body.dark-mode .error {
+            background: #3d1a1a;
+            border-color: #8b0000;
+            color: #ff6b6b;
         }
 
         @media (max-width: 768px) {
@@ -150,12 +297,24 @@
             .chart-container {
                 height: 350px;
             }
+
+            #co2-summary {
+                font-size: 0.9em;
+            }
+
+            #co2-summary th,
+            #co2-summary td {
+                padding: 10px 5px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 id="co2-dataset-name">Loading...</h1>
+        <div class="header-controls">
+            <h1 id="co2-dataset-name">Loading...</h1>
+            <button id="theme-toggle">🌙 Dark Mode</button>
+        </div>
 
         <div class="stats-grid">
             <div class="stat-card">
@@ -191,12 +350,63 @@
         <div class="chart-container">
             <canvas id="co2-chart"></canvas>
         </div>
+
+        <table id="co2-summary">
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Maximum (ppm)</th>
+                    <th>Minimum (ppm)</th>
+                    <th>Average (ppm)</th>
+                </tr>
+            </thead>
+            <tbody id="co2-summary-body">
+                <tr>
+                    <td colspan="4">Loading data...</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <script>
         let chartInstance = null;
         let fullDataset = [];
         let statsData = {};
+
+        // Theme toggle functionality
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const themeToggle = document.getElementById('theme-toggle');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.textContent = '☀️ Light Mode';
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeToggle.textContent = '🌙 Dark Mode';
+            }
+        }
+
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            const body = document.body;
+            const themeToggle = document.getElementById('theme-toggle');
+            
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                themeToggle.textContent = '🌙 Dark Mode';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.add('dark-mode');
+                themeToggle.textContent = '☀️ Light Mode';
+                localStorage.setItem('theme', 'dark');
+            }
+            
+            // Re-render chart with updated theme
+            if (fullDataset.length > 0) {
+                const selectedYear = document.getElementById('year-filter').value;
+                updateChart(selectedYear);
+            }
+        });
 
         // Get year from URL parameter
         function getYearFromURL() {
@@ -227,6 +437,64 @@
             } catch (error) {
                 console.error('Error loading stats data:', error);
             }
+        }
+
+        // Calculate 5-year moving average
+        function calculateMovingAverage(data, windowSize = 60) {
+            const result = [];
+            for (let i = 0; i < data.length; i++) {
+                if (i < windowSize - 1) {
+                    result.push(null);
+                } else {
+                    const window = data.slice(i - windowSize + 1, i + 1);
+                    const avg = window.reduce((sum, d) => sum + d.value, 0) / windowSize;
+                    result.push(parseFloat(avg.toFixed(2)));
+                }
+            }
+            return result;
+        }
+
+        // Calculate yearly statistics
+        function calculateYearlyStats(data) {
+            const yearlyData = {};
+            
+            data.forEach(entry => {
+                if (!yearlyData[entry.year]) {
+                    yearlyData[entry.year] = [];
+                }
+                yearlyData[entry.year].push(entry.value);
+            });
+            
+            const stats = [];
+            for (const year in yearlyData) {
+                const values = yearlyData[year];
+                stats.push({
+                    year: parseInt(year),
+                    max: Math.max(...values).toFixed(2),
+                    min: Math.min(...values).toFixed(2),
+                    avg: (values.reduce((a, b) => a + b, 0) / values.length).toFixed(2)
+                });
+            }
+            
+            return stats.sort((a, b) => a.year - b.year);
+        }
+
+        // Update summary table
+        function updateSummaryTable(data) {
+            const yearlyStats = calculateYearlyStats(data);
+            const tbody = document.getElementById('co2-summary-body');
+            tbody.innerHTML = '';
+            
+            yearlyStats.forEach(stat => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${stat.year}</td>
+                    <td>${stat.max}</td>
+                    <td>${stat.min}</td>
+                    <td>${stat.avg}</td>
+                `;
+                tbody.appendChild(row);
+            });
         }
 
         // Fetch and process NOAA data
@@ -265,6 +533,9 @@
                     yearFilter.value = urlYear;
                 }
                 
+                // Update summary table
+                updateSummaryTable(fullDataset);
+                
                 // Initial chart render
                 updateChart(yearFilter.value);
                 
@@ -291,10 +562,52 @@
             });
             
             const values = filteredData.map(d => d.value);
+            const movingAverage = selectedYear === 'all' ? calculateMovingAverage(filteredData) : [];
             
             // Destroy existing chart
             if (chartInstance) {
                 chartInstance.destroy();
+            }
+            
+            // Determine colors based on theme
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            const primaryColor = isDarkMode ? '#bb86fc' : '#667eea';
+            const secondaryColor = isDarkMode ? '#03dac6' : '#ff6b9d';
+            const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)';
+            const textColor = isDarkMode ? '#e0e0e0' : '#333';
+            
+            // Create datasets
+            const datasets = [{
+                label: 'CO₂ Concentration (ppm)',
+                data: values,
+                borderColor: primaryColor,
+                backgroundColor: isDarkMode ? 'rgba(187, 134, 252, 0.1)' : 'rgba(102, 126, 234, 0.1)',
+                borderWidth: 2,
+                tension: 0.4,
+                fill: true,
+                pointRadius: filteredData.length > 50 ? 0 : 3,
+                pointHoverRadius: 6,
+                pointBackgroundColor: primaryColor,
+                pointBorderColor: isDarkMode ? '#0f3460' : '#fff',
+                pointBorderWidth: 2
+            }];
+            
+            // Add moving average only for "All Years"
+            if (selectedYear === 'all' && movingAverage.length > 0) {
+                datasets.push({
+                    label: '5-Year Moving Average',
+                    data: movingAverage,
+                    borderColor: secondaryColor,
+                    backgroundColor: 'transparent',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: false,
+                    pointRadius: 0,
+                    pointHoverRadius: 6,
+                    pointBackgroundColor: secondaryColor,
+                    pointBorderColor: isDarkMode ? '#0f3460' : '#fff',
+                    pointBorderWidth: 2
+                });
             }
             
             // Create new chart
@@ -303,20 +616,7 @@
                 type: 'line',
                 data: {
                     labels: labels,
-                    datasets: [{
-                        label: 'CO₂ Concentration (ppm)',
-                        data: values,
-                        borderColor: '#667eea',
-                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
-                        borderWidth: 2,
-                        tension: 0.4,
-                        fill: true,
-                        pointRadius: filteredData.length > 50 ? 0 : 3,
-                        pointHoverRadius: 6,
-                        pointBackgroundColor: '#667eea',
-                        pointBorderColor: '#fff',
-                        pointBorderWidth: 2
-                    }]
+                    datasets: datasets
                 },
                 options: {
                     responsive: true,
@@ -326,6 +626,7 @@
                             display: true,
                             position: 'top',
                             labels: {
+                                color: textColor,
                                 font: {
                                     size: 14,
                                     weight: 'bold'
@@ -335,7 +636,9 @@
                         tooltip: {
                             mode: 'index',
                             intersect: false,
-                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            backgroundColor: isDarkMode ? 'rgba(15, 52, 96, 0.95)' : 'rgba(0, 0, 0, 0.8)',
+                            titleColor: isDarkMode ? '#e0e0e0' : '#ffffff',
+                            bodyColor: isDarkMode ? '#e0e0e0' : '#ffffff',
                             titleFont: {
                                 size: 14,
                                 weight: 'bold'
@@ -353,25 +656,31 @@
                             title: {
                                 display: true,
                                 text: 'CO₂ Concentration (ppm)',
-                                font: {
-                                    size: 14,
-                                    weight: 'bold'
-                                }
-                            },
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.05)'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Time',
+                                color: textColor,
                                 font: {
                                     size: 14,
                                     weight: 'bold'
                                 }
                             },
                             ticks: {
+                                color: textColor
+                            },
+                            grid: {
+                                color: gridColor
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Time',
+                                color: textColor,
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            },
+                            ticks: {
+                                color: textColor,
                                 maxRotation: 45,
                                 minRotation: 45,
                                 autoSkip: true,
@@ -407,6 +716,7 @@
 
         // Initialize on page load
         async function init() {
+            initTheme();
             await loadStatsData();
             await fetchNOAAData();
         }
