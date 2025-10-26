@@ -4,13 +4,20 @@ An interactive web application that visualizes global CO₂ concentration data f
 
 ## Features
 
+### Core Functionality
 - **Real-time Data Fetching**: Automatically retrieves the latest CO₂ measurements from NOAA's official JSON API
 - **Statistical Analysis**: Calculates and displays maximum, minimum, and average CO₂ concentrations
 - **Interactive Time-Series Chart**: Visualizes CO₂ trends over time using Chart.js
+- **5-Year Moving Average**: Displays smoothed trendline showing long-term CO₂ trends
 - **Dynamic Year Filtering**: Filter data by specific years using an intuitive dropdown menu
 - **URL Parameter Support**: Direct links to specific years via `?year=YYYY` query parameters
 - **Responsive Design**: Beautiful gradient UI that works seamlessly on desktop and mobile devices
-- **Data Persistence**: Pre-processed statistics stored in `data.json` for quick access
+
+### New in Round 2
+- **Dark/Light Mode Toggle**: Switch between light and dark themes with persistent preference storage
+- **Summary Statistics Table**: Comprehensive yearly breakdown showing max, min, and average values
+- **Enhanced Visualization**: Dual-line chart displaying both raw data and 5-year moving average
+- **Improved Data Processing**: Extended `data.json` with pre-calculated moving average data
 
 ## Setup Instructions
 
