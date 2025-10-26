@@ -37,6 +37,22 @@ max_entry = max(filtered_values, key=lambda x: x['value'])
 min_entry = min(filtered_values, key=lambda x: x['value'])
 average_value = round(mean([x['value'] for x in filtered_values]), 2)
 
+# Calculate 5-year moving average (60 months)
+yearly_averages = {}
+for entry in filtered_values:
+    year = entry['year']
+    if year not in yearly_averages:
+        yearly_averages[year] = []
+    yearly_averages[year].append(entry['value'])
+
+moving_average = []
+for year in sorted(yearly_averages.keys()):
+    avg = round(mean(yearly_averages[year]), 2)
+    moving_average.append({
+        'year': year,
+        'avg': avg
+    })
+
 # Create output structure
 output = {
     "dataset": "NOAA CO2 Monthly Mean",
@@ -50,7 +66,8 @@ output = {
         "year": min_entry['year'],
         "month": min_entry['month']
     },
-    "average": average_value
+    "average": average_value,
+    "moving_average": moving_average
 }
 
 # Save to data.json
@@ -61,3 +78,4 @@ print(f"Data saved to data.json")
 print(f"Max: {max_entry['value']} ppm ({max_entry['year']}-{max_entry['month']:02d})")
 print(f"Min: {min_entry['value']} ppm ({min_entry['year']}-{min_entry['month']:02d})")
 print(f"Average: {average_value} ppm")
+print(f"Moving average data points: {len(moving_average)}")
